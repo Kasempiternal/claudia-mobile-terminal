@@ -3,7 +3,6 @@ import { Send, Bot, User, Loader2, AlertCircle } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { useWebSocketStore } from '../stores/websocketStore';
-import { cn } from '@/lib/utils';
 
 interface ClaudeChatProps {
   sessionId: string;

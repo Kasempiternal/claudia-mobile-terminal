@@ -5,8 +5,8 @@ import {
   ConnectMessage,
   TerminalOutputMessage,
   ClaudeOutputMessage,
-  SessionListMessage,
-  ErrorMessage
+  ErrorMessage,
+  AuthSuccessMessage
 } from '@shared/protocol';
 
 interface Terminal {
@@ -222,10 +222,11 @@ function handleMessage(
 ) {
   switch (message.type) {
     case MessageType.AUTH_SUCCESS:
+      const authMessage = message as AuthSuccessMessage;
       set({ 
         isConnected: true, 
         isConnecting: false,
-        sessionId: message.sessionId
+        sessionId: authMessage.sessionId
       });
       break;
 
@@ -282,8 +283,8 @@ function handleMessage(
       break;
 
     case MessageType.SESSION_LIST:
-      const sessionList = message as SessionListMessage;
-      // Update session list
+      // TODO: Handle session list update
+      // const sessionListMsg = message as SessionListMessage;
       break;
 
     case MessageType.ERROR:
